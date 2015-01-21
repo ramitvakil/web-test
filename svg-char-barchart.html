@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>DEMO the Bar Chart using SVG</title>
+    <style type="text/css">
+        #dvcontainer {
+           height:600px;width:900px;border:double;background-color:azure;
+           position:fixed;
+           left:200px;
+         }
+        #dvcharttype {
+          border:double;
+           height:100px;width:100px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        //The data for drawing chart
+        var populationArray = new Array();
+        populationArray[0] = "MH,10000";
+        populationArray[1] = "KR,12000";
+        populationArray[2] = "AP,9000";
+        populationArray[3] = "KL,7000";
+        populationArray[4] = "CH,5000";
+        populationArray[5] = "MP,9500";
+        populationArray[6] = "GJ,9700";
+        populationArray[7] = "OR,8800";
+        populationArray[8] = "RJ,8600";
+        populationArray[9] = "CH,9200";
+
+        //Global Declaration Here
+        var svg; //The declaration for SVG tag
+
+        //The Chart dimentional settings
+        var svgcWidth, svgcHeight, svgcMargin, svgcSpace;
+        var svgcMarginSpace, svgcMarginHeight;
+
+        //The bar Properties Declaration
+        var bcWidth, bcMargin, totalChartBars, maximumDataValue, bcWidthMargin;
+
+        //The Axis Property
+        var totalLabelOnYAxis;
+         
+        //Ends Here
+
+
+        //Function to Draw Barchart
+        function drawBarChart() {
+            svg = document.getElementsByTagName('svg')[0];
+           
+            var rdbarchart = document.getElementById('rdbarchart');
+            rdbarchart.addEventListener('click', function () {
+                clearGraph();
+                barChartSettings();
+                drawAxisLableAndMarkers();
+
+                drawChartWithCalculation("Bar");
+            }, false);
+            var rdpointchart = document.getElementById('rdpointchart');
+            rdpointchart.addEventListener('click', function () {
+                clearGraph();
+                barChartSettings();
+                drawAxisLableAndMarkers();
+                drawChartWithCalculation("Point");
+            }, false);
+        }
+        //Ends Here
+
+        
+        //function to clear the SVG contents
+        function clearGraph() {
+            while (svg.lastChild) {
+                svg.removeChild(svg.lastChild);
+            }
+        }
+        //Ends Here
+
+        //Function to specify   Chart settings
+        function barChartSettings() {
+            svgcMargin = 20;
+            svgcSpace = 60;
+
+            svgcHeight = svg.height.baseVal.value - 2 * svgcMargin - svgcSpace;
+            svgcWidth = svg.width.baseVal.value - 2 * svgcMargin - svgcSpace;
+
+            svgcMarginSpace = svgcMargin + svgcSpace;
+            svgcMarginHeight = svgcMargin + svgcHeight;
+
+            //The Bar Properties
+            bcMargin = 15;
+            totalChartBars = populationArray.length;
+            bcWidth = (svgcWidth / totalChartBars) - bcMargin;
+
+            //Maximum value to plot on chart
+
+            maximumDataValue = 0;
+            for (var i = 0; i < totalChartBars; i++) {
+                var arrVal = populationArray[i].split(",");
+                var barVal = parseInt(arrVal[1]);
+                if (parseInt(barVal) > parseInt(maximumDataValue))
+                    maximumDataValue = barVal;
+            }
+
+            totalLabelOnYAxis = 10;
+        }
+        //Ends Here
+
+
+        //Function to Draw X and Y Axis
+        function drawXYAxis(x1, y1, x2, y2) {
+
+            var dataAxis = document.createElementNS("http://www.w3.org/2000/svg", 'line');
+            dataAxis.setAttribute("x1", x1);
+            dataAxis.setAttribute("y1", y1);
+            dataAxis.setAttribute("x2", x2);
+            dataAxis.setAttribute("y2", y2);
+            dataAxis.style.stroke = "black";
+            dataAxis.style.strokeWidth = "5px";
+            svg.appendChild(dataAxis);
+
+        }
+        //Ends Here
+
+        //Function to Draw Markers on the Axis
+        function drawAxisMarkers() {
+            var numMarkers = parseInt(maximumDataValue/totalLabelOnYAxis);
+
+            // On y Axis
+            for (var i = 0; i < totalLabelOnYAxis +1; i++) {
+                markerVal = i * numMarkers;
+                markerValHt = i * numMarkers * svgcHeight;
+                var xMarkers = svgcMarginSpace - 5;
+                var yMarkers = svgcMarginHeight - (markerValHt / maximumDataValue);
+
+                textelement = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+                textelement.setAttribute('dx', xMarkers-40);
+                textelement.setAttribute('dy',yMarkers);
+                txtnode = document.createTextNode(markerVal);
+                textelement.appendChild(txtnode);
+                svg.appendChild(textelement);
+            }
+
+            //On x Axis
+            for (var i = 0; i < totalChartBars; i++) {
+                arrVal = populationArray[i].split(",");
+                name = arrVal[0];
+                markerXPosition = svgcMarginSpace + bcMargin + (i * (bcWidth + bcMargin)) + (bcWidth / 2);
+                markerYPosition = svgcMarginHeight + 20;
+
+                textelement = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+                textelement.setAttribute('dx', markerXPosition);
+                textelement.setAttribute('dy', markerYPosition);
+                txtnode = document.createTextNode(name);
+                textelement.appendChild(txtnode);
+                svg.appendChild(textelement);
+            }
+        }
+        //Ends Here
+
+        //Method to Draw Axis Label
+        function drawAxisLableAndMarkers() {
+            //Y-Axis
+            drawXYAxis(svgcMarginSpace, svgcMarginHeight, svgcMarginSpace, svgcMargin);
+            //X-Axis
+            drawXYAxis(svgcMarginSpace, svgcMarginHeight, svgcMarginSpace + bcWidth+500, svgcMarginHeight);
+            drawAxisMarkers();
+        }
+        //Ends Here
+
+        //Method to Draw rectangle
+        function drawRectangleForChart(x,y,wd,ht,fill) {
+            var rect = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
+            rect.setAttributeNS(null, 'x', x);
+            rect.setAttributeNS(null, 'y', y);
+            rect.setAttributeNS(null, 'width', wd);
+            rect.setAttributeNS(null, 'height', ht);
+            rect.setAttributeNS(null, 'fill', "red");
+            svg.appendChild(rect);
+        } 
+        //Ends Here
+
+        //Method to Draw Ellipse for the Point Chart
+        function drawEllipse(x,y,rx) {
+            var circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
+            circle.setAttributeNS(null, 'cx', x);
+            circle.setAttributeNS(null, 'cy', y);
+            circle.setAttributeNS(null, 'r', rx);
+            circle.setAttributeNS(null, 'fill', "red");
+            svg.appendChild(circle);
+        }
+        //Ends Here
+
+        //Function to draw barchart for all entries in the Population Array
+        function drawChartWithCalculation(chart) {
+
+            for (var i = 0; i < totalChartBars; i++) {
+                var arrchartVal = populationArray[i].split(",");
+                bcVal = parseInt(arrchartVal[1]);
+                bcHt = (bcVal * svgcHeight / maximumDataValue);
+                bcX = svgcMarginSpace + (i * (bcWidth + bcMargin)) + bcMargin+10;
+                bcY = (svgcMarginHeight - bcHt - 2);
+                switch (chart)
+                {
+                    case "Bar":
+                        drawRectangleForChart(bcX, bcY, bcWidth, bcHt, true);
+                        break;
+                    case "Point":
+                        drawEllipse(bcX, bcY, 5, 5);
+                        break;
+                }
+            }
+        }
+        //Ends Here
+
+
+            
+        window.onload = drawBarChart;
+    </script>
+
+</head>
+<body>
+    <div  id="dvcontainer">
+        <svg id="svgcontainer" height="400" width="600">
+        </svg>
+    </div>
+    <div id="dvcharttype">
+            <input type="radio" id="rdbarchart" name="Chart" />Bar Chart
+            <br />
+            <input type="radio" id="rdpointchart" name="Chart" />Point Chart
+    </div>
+</body>
+</html>
