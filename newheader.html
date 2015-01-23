@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Procure-edge Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="plugins/animate.css">
+    <!--My css-->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+    <div id="header" class="header navbar navbar-default navbar-fixed-top">
+        <!-- begin container-fluid -->
+        <div class="container-fluid">
+            <!-- begin mobile sidebar expand / collapse button -->
+            <div class="navbar-header">
+                <a href="index.html" class="navbar-brand"><img src="img/pe-logo.png" alt="Procure Edge">
+                </a>
+            </div>
+            <!-- end mobile sidebar expand / collapse button -->
+
+            <!-- begin header navigation right -->
+            <ul class="nav navbar-nav navbar-right user-nav">
+                <li id="search">
+                    <form class="navbar-form full-width">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search ...">
+                            <button type="submit" class="btn btn-search"><i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </li>
+
+
+                <li class="dropdown messages dd-progress ">
+                    <span class="badge badge-primary animated bounceIn" id="new-messages">3</span>
+                    <button type="button" class="btn btn-default dropdown-toggle options" id="toggle-mail" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-tasks fa-fw"></i>
+                    </button>
+                    <ul class="dropdown-menu alert animated fadeInDown">
+                        <li>
+                            <h1>Taskes<span class="label label-primary pull-right">105</span></h1>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 1</strong>
+                                        <span class="pull-right text-muted">40% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <p>
+                                        <strong>Task 2</strong>
+                                        <span class="pull-right text-muted">20% Complete</span>
+                                    </p>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                            <span class="sr-only">20% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><a href="#">View All</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
+                <li class="dropdown messages">
+                    <span class="badge badge-primary animated bounceIn" id="new-messages">4</span>
+                    <button type="button" class="btn btn-default dropdown-toggle options" id="toggle-mail" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-envelope"></i>
+                    </button>
+                    <ul class="dropdown-menu alert animated fadeInDown">
+                        <li>
+                            <h1>Messages<span class="label label-primary pull-right">350</span></h1>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="profile-photo">
+                                    <img src="img/small-message.jpg" alt="" class="img-circle">
+                                </div>
+                                <div class="message-info">
+                                    <span class="sender">James Bagian</span>
+                                    <div class="message-content">Lorem ipsum dolor sit amet, elit rutrum felis sed erat augue fusce...</div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="profile-photo">
+                                    <img src="img/small-message.jpg" alt="" class="img-circle">
+                                </div>
+                                <div class="message-info">
+                                    <span class="sender">Jeffrey Ashby</span>
+                                    <div class="message-content">hendrerit pellentesque, iure tincidunt, faucibus vitae dolor aliquam...</div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="profile-photo">
+                                    <img src="img/small-message.jpg" alt="" class="img-circle">
+                                </div>
+                                <div class="message-info">
+                                    <span class="sender">John Douey</span>
+                                    <div class="message-content">Penatibus suspendisse sit pellentesque eu accumsan condimentum nec...</div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="profile-photo">
+                                    <img src="img/small-message.jpg" alt="" class="img-circle">
+                                </div>
+                                <div class="message-info">
+                                    <span class="sender">Ellen Baker</span>
+                                    <div class="message-content">Sem dapibus in, orci bibendum faucibus tellus, justo arcu...</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><a href="#">View All</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li id="alerts" class="dropdown messages dd-alerts">
+                    <span class="badge badge-danger animated bounceIn" id="new-alerts">3</span>
+                    <button type="button" class="btn btn-default dropdown-toggle options" id="toggle-mail" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-bell fa-fw"></i>
+                    </button>
+                    <ul class="dropdown-menu alert animated fadeInDown">
+                        <li>
+                            <h1 class="alert">Alerts<span class="label label-danger pull-right">4</span></h1>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li><a href="#">View All</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
+                <li id="profile" class="dropdown navbar-user">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="img/user-profile.jpg" alt="John Doe Junior">
+                        <span class="hidden-xs">John Doe Junior</span> <i class="fa fa-angle-down"></i>
+                        <br/><span class="hidden-xs designation">Administrator</span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInLeft">
+                        <li class="arrow"></li>
+                        <li><a href="javascript:;">Edit Profile</a>
+                        </li>
+                        <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a>
+                        </li>
+                        <li><a href="javascript:;">Calendar</a>
+                        </li>
+                        <li><a href="javascript:;">Setting</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="javascript:;">Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- end header navigation right -->
+        </div>
+        <!-- end container-fluid -->
+    </div>
+
+    <div id="page-wrapper">
+        <div id="nav-toggle">
+            <button type="button" id="main-menu-toggle"><i class="navbar-icon fa fa-bars icon"></i><span class="hide-menu-text">HIDE MENU</span>
+            </button>
+        </div>
+
+
+
+ <div class="inner-content">
+    	<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+									<div class="main-box clearfix">
+										<header class="main-box-header clearfix">
+											<h2>Todo</h2>
+										</header>
+										
+										<div class="main-box-body clearfix">
+	
+											<ul class="widget-todo">
+												<li class="clearfix">
+													<div class="name">
+														<div class="checkbox-nice">
+															<input type="checkbox" id="todo-1">
+															<label for="todo-1">
+																New products introduction <span class="label label-danger">High Priority</span>
+															</label>
+														</div>
+													</div>
+												</li>
+												<li class="clearfix">
+													<div class="name">
+														<div class="checkbox-nice">
+															<input type="checkbox" id="todo-2">
+															<label for="todo-2">
+																Checking the stock <span class="label label-success">Low Priority</span>
+															</label>
+														</div>
+													</div>
+													<div class="actions">
+														<a href="#" class="table-link">
+															<i class="fa fa-pencil"></i>
+														</a>
+														<a href="#" class="table-link danger">
+															<i class="fa fa-trash-o"></i>
+														</a>
+													</div>
+												</li>
+												<li class="clearfix">
+													<div class="name">
+														<div class="checkbox-nice">
+															<input type="checkbox" id="todo-3" checked="checked">
+															<label for="todo-3">
+																Buying coffee <span class="label label-warning">Medium Priority</span>
+															</label>
+														</div>
+													</div>
+													<div class="actions">
+														<a href="#" class="table-link">
+															<i class="fa fa-pencil"></i>
+														</a>
+														<a href="#" class="table-link danger">
+															<i class="fa fa-trash-o"></i>
+														</a>
+													</div>
+												</li>
+												<li class="clearfix">
+													<div class="name">
+														<div class="checkbox-nice">
+															<input type="checkbox" id="todo-4">
+															<label for="todo-4">
+																New marketing campaign <span class="label label-success">Low Priority</span>
+															</label>
+														</div>
+													</div>
+												</li>
+												<li class="clearfix">
+													<div class="name">
+														<div class="checkbox-nice">
+															<input type="checkbox" id="todo-5">
+															<label for="todo-5">
+																Calling Mom <span class="label label-warning">Medium Priority</span>
+															</label>
+														</div>
+													</div>
+													<div class="actions">
+														<a href="#" class="table-link badge">
+															<i class="fa fa-cog"></i>
+														</a>
+													</div>
+												</li>
+												<li class="clearfix">
+													<div class="name">
+														<div class="checkbox-nice">
+															<input type="checkbox" id="todo-6">
+															<label for="todo-6">
+																Ryan's birthday <span class="label label-danger">High Priority</span>
+															</label>
+														</div>
+													</div>
+												</li>
+											</ul>
+												
+										</div>
+									</div>
+								</div>
+
+    </div>
+
+
+
+
+    </div>
+
+
+    <footer>
+        <div class="navbar navbar-inverse navbar-fixed-bottom navbar-footer" role="navigation">
+            <div class="container">
+                <div class="navbar-text pull-left">
+                    <p>All rights reserved to edgeverve systems Ltd</p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <div class="theme-panel">
+        <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cogs"></i></a>
+        <div class="theme-panel-content">
+
+        </div>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <!--My scrips-->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
